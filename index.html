@@ -8,7 +8,7 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
   <title>Day 7</title>
 </head>
 
@@ -17,17 +17,43 @@
 
   <div class="container">
     <div class="row">
-      <div class="col">
+      <div class="col-6">
         <video id="video" width="560" height="315" controls>
           <source src="assets/swiss.mp4" type="video/mp4">
           Browser kamu tidak mendukung html5 video
         </video>
       </div>
-      <div class="col">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/KUXaEFTv3tI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <div class="col-6">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/KUXaEFTv3tI" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
       </div>
     </div>
   </div>
+
+  <div class="container text-center py-4">
+    <h5>Klik di sini untuk mendapatkan lokasi kamu!</h5>
+    <button class="btn btn-primary" onclick="getlocation()">Dapatkan lokasi!</button>
+    <p id="demo"></p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6342301.00043755!2d35.129329549999994!3d39.0876459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b0155c964f2671%3A0x40d9dbd42a625f2a!2zVMO8cmtpeWU!5e0!3m2!1sen!2sid!4v1709129139447!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+ 
+  <script>
+    var x = document.getElementById("demo");
+
+    function getlocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        x.innerHTML = "Geolocation tidak didukung pada browser ini";
+      }
+    }
+
+    function showPosition(position) {
+      x.innerHTML = "Latitude: " + position.coords.latitude +
+        "<br>Longitude: " + position.coords.longitude;
+    }
+  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
